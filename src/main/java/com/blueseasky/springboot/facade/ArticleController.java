@@ -25,7 +25,7 @@ public class ArticleController {
      * 默认排序 按点赞数量相同数量按创建日期
      * @return
      */
-    @GetMapping(value = "/queryArticleList")
+    @GetMapping(value = "/queryArticleList",produces = "application/json;charset=UTF-8")
     public List<ArticleDto> queryArticleList(){
 
         List<Article> articleList =  articleDao.findAll();
@@ -41,9 +41,10 @@ public class ArticleController {
      * @param id
      * @return
      */
-    @GetMapping(value = "/queryArticle", produces = "application/json")
+    @GetMapping(value = "/queryArticle", produces = "application/json;charset=UTF-8")
     public ArticleDto queryArticle(@ModelAttribute String id){
 
+        System.out.println("queryArticle start id="+id);
         if (null == id){
             return null;
         }
