@@ -12,6 +12,8 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.transaction.Transactional;
+
 /**
  * Created by renlei on 2017/6/13.
  */
@@ -19,10 +21,17 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @SpringBootTest
 @ConfigurationProperties(locations = "classpath:config/application.properties")
 @Rollback(value = false)
+//@Transactional()
 public class ArticleTest extends AbstractJUnit4SpringContextTests{
 
     @Autowired
     private ArticleDao articleDao;
+
+    @Test
+    public void test_creatTable(){
+
+        System.out.println("create table");
+    }
 
     @Test
     public void test_insertArticle(){
