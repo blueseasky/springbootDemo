@@ -4,11 +4,11 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by zhaosheng on 2017/6/7.
+ * Created by renlei on 2017/6/7.
  */
 @Component
-@ConfigurationProperties(prefix = "person")
-public class Person {
+@ConfigurationProperties(prefix = "person", locations = "classpath:config/person-settings.properties")
+public class PersonSettings {
 
     private String name;
     private Integer age;

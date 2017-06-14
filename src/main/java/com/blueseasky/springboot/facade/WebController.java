@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Created by zhaosheng on 2017/6/7.
+ * Created by renlei on 2017/6/7.
  */
 @RestController
 //@EnableAutoConfiguration
-public class WebController {
+public class WebController{
 
     @Autowired
     private PersonSettings personSettings;
@@ -24,12 +24,20 @@ public class WebController {
         return "HelloWorld";
     }
 
+    /*
+    * 返回为Object类型，自动转换为json
+    * */
     @GetMapping(value = "/person")
     public String person(){
 
          return personSettings.getName() + " " +personSettings.getAge();
     }
 
+    @GetMapping(value = "/personSettings")
+    public PersonSettings personSettings(){
+
+        return personSettings;
+    }
 
     /*
     * 正则匹配
@@ -39,4 +47,7 @@ public class WebController {
 
         return "Id:" + id;
     }
+
+
+
 }
