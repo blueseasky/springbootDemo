@@ -5,6 +5,7 @@ import com.blueseasky.springboot.domain.article.ArticleWrapper;
 import com.blueseasky.springboot.domain.article.dao.ArticleDao;
 import com.blueseasky.springboot.domain.dto.ArticleDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -45,7 +46,9 @@ public class ArticleController {
     public ArticleDto queryArticle(@ModelAttribute String id){
 
         System.out.println("queryArticle start id="+id);
-        if (null == id){
+        if (StringUtils.isEmpty(id)){
+
+            System.out.println("接收参数id为空");
             return null;
         }
 
