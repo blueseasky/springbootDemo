@@ -58,6 +58,47 @@ public class ArticleController {
     }
 
     /**
+     * 根据id查询文章
+     * @param id
+     * @return
+     */
+    @GetMapping(value = "/queryArticleByBody", produces = "application/json;charset=UTF-8")
+    public ArticleDto queryArticleByBody(@RequestBody String id){
+
+        System.out.println("queryArticle start id="+id);
+        if (StringUtils.isEmpty(id)){
+
+            System.out.println("接收参数id为空");
+            return null;
+        }
+
+        Article article = articleDao.findOne(id);
+
+        return new ArticleDto(article);
+    }
+
+
+    /**
+     * 根据id查询文章
+     * @param id
+     * @return
+     */
+    @GetMapping(value = "/queryArticleByPath{id}", produces = "application/json;charset=UTF-8")
+    public ArticleDto queryArticleByPath(@PathVariable String id){
+
+        System.out.println("queryArticle start id="+id);
+        if (StringUtils.isEmpty(id)){
+
+            System.out.println("接收参数id为空");
+            return null;
+        }
+
+        Article article = articleDao.findOne(id);
+
+        return new ArticleDto(article);
+    }
+
+    /**
      * 根据id，点赞文章
      * @param id
      * @return
